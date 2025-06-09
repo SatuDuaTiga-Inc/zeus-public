@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Zeus - All-in-One Merchant Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #f0fdfa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0f766e, #0284c7);
+        }
+
+        .btn-outline {
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+        }
+
+        .btn-outline:hover {
+            background: #f9fafb;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: #ccfbf1;
+            color: #0f766e;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero .gradient-text {
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f9fafb;
+        }
+
+        .section-gradient {
+            background: linear-gradient(135deg, #f0f9ff, white);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-center {
+            text-align: center;
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        /* Demo Carousel */
+        .demo-carousel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 75rem;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .demo-carousel {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .phone-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 20rem;
+            height: 42.5rem;
+            background: #111827;
+            border-radius: 3rem;
+            padding: 0.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .carousel-prev {
+            left: 0.5rem;
+        }
+
+        .carousel-next {
+            right: 0.5rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            border: none;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .carousel-dot.active {
+            background: #14b8a6;
+        }
+
+        .demo-content {
+            space-y: 2rem;
+        }
+
+        .demo-highlight {
+            background: linear-gradient(135deg, #f0f9ff, #f0fdfa);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-left: 4px solid #14b8a6;
+        }
+
+        .demo-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #14b8a6;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .demo-tab {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .demo-tab.active {
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            color: white;
+        }
+
+        .demo-tab:not(.active) {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .demo-tab:not(.active):hover {
+            background: #e5e7eb;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            position: relative;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: #14b8a6;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .pricing-period {
+            color: #6b7280;
+        }
+
+        .pricing-description {
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .check-icon {
+            color: #10b981;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .star-icon {
+            color: #14b8a6;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /* Promotion Section */
+        .promotion-section {
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            color: white;
+        }
+
+        .promotion-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-text {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Animations */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .pulse-delay {
+            animation: pulse 2s infinite 1s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .phone-frame {
+                width: 16rem;
+                height: 30rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span class="logo-text">Project Zeus</span>
+                </div>
+                <a href="#" class="btn btn-primary">Get Started Free</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">All-in-One Merchant Platform</div>
+            <h1>
+                Digitize Your Storefront,
+                <span class="gradient-text">Keep Your Brand</span>
+            </h1>
+            <p>
+                Empower your F&B and retail business with our mobile-first platform. Manage orders, payments, promotions,
+                and loyalty programs while maintaining your unique brand identity.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary btn-lg">Start Free Trial</a>
+                <a href="#" class="btn btn-outline btn-lg">View Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Overview -->
+    <section class="section section-white">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Grow</h2>
+            <p class="section-subtitle">
+                Built specifically for Southeast Asian merchants, our platform combines powerful features with an
+                intuitive mobile-first experience.
+            </p>
+
+            <div class="grid grid-4">
+                <div class="card card-center">
+                    <div class="card-icon" style="background: #ccfbf1;">
+                        <span style="color: #0f766e;">💳</span>
+                    </div>
+                    <h3 class="card-title">Order Management</h3>
+                    <p class="card-content">
+                        Streamline your order processing with real-time tracking and automated workflows.
+                    </p>
+                </div>
+
+                <div class="card card-center">
+                    <div class="card-icon" style="background: #dbeafe;">
+                        <span style="color: #1d4ed8;">📱</span>
+                    </div>
+                    <h3 class="card-title">QR Menu & Payments</h3>
+                    <p class="card-content">
+                        Enable contactless ordering and secure payment processing for your customers.
+                    </p>
+                </div>
+
+                <div class="card card-center">
+                    <div class="card-icon" style="background: #e9d5ff;">
+                        <span style="color: #7c3aed;">❤️</span>
+                    </div>
+                    <h3 class="card-title">Loyalty Programs</h3>
+                    <p class="card-content">
+                        Build customer retention with customizable loyalty rewards and promotions.
+                    </p>
+                </div>
+
+                <div class="card card-center">
+                    <div class="card-icon" style="background: #ccfbf1;">
+                        <span style="color: #0f766e;">📈</span>
+                    </div>
+                    <h3 class="card-title">Analytics & CRM</h3>
+                    <p class="card-content">
+                        Gain insights into your business performance and manage customer relationships.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section section-gradient">
+        <div class="container">
+            <div class="badge" style="background: #dcfce7; color: #166534; display: block; text-align: center; margin-bottom: 1rem;">Live Merchant Examples</div>
+            <h2 class="section-title">See Project Zeus in Action</h2>
+            <p class="section-subtitle">
+                Real businesses across Southeast Asia are already thriving with our platform. Each merchant maintains
+                their unique brand identity while leveraging our powerful features.
+            </p>
+
+            <div class="demo-carousel">
+                <!-- Mobile Demo -->
+                <div class="phone-mockup">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(14, 165, 233, 0.2)); border-radius: 1.5rem; filter: blur(3rem);"></div>
+                    <div style="position: relative; background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="carousel-container" id="carousel">
+                                    <div class="carousel-slide" style="transform: translateX(0%);">
+                                        <img src="./images/two-sisters-smoothies-demo.jpg" alt="Two Sisters' Smoothies menu interface">
+                                    </div>
+                                    <div class="carousel-slide" style="transform: translateX(100%);">
+                                        <img src="./images/smoothie-order-page.jpg" alt="Order customization page">
+                                    </div>
+                                    <div class="carousel-slide" style="transform: translateX(100%);">
+                                        <img src="./images/smoothie-checkout-page.jpg" alt="Checkout payment screen">
+                                    </div>
+                                    <div class="carousel-slide" style="transform: translateX(100%);">
+                                        <img src="./images/smoothie-rewards-page.jpg" alt="Loyalty rewards program">
+                                    </div>
+                                </div>
+                                
+                                <button class="carousel-nav carousel-prev" onclick="prevSlide()">‹</button>
+                                <button class="carousel-nav carousel-next" onclick="nextSlide()">›</button>
+                            </div>
+                            
+                            <!-- Phone highlights -->
+                            <div style="position: absolute; top: -0.5rem; right: -0.5rem; width: 1.5rem; height: 1.5rem; background: #14b8a6; border-radius: 50%;" class="pulse"></div>
+                            <div style="position: absolute; bottom: -0.5rem; left: -0.5rem; width: 1rem; height: 1rem; background: #0ea5e9; border-radius: 50%;" class="pulse pulse-delay"></div>
+                        </div>
+
+                        <div class="carousel-dots">
+                            <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+                            <button class="carousel-dot" onclick="goToSlide(1)"></button>
+                            <button class="carousel-dot" onclick="goToSlide(2)"></button>
+                            <button class="carousel-dot" onclick="goToSlide(3)"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Content -->
+                <div class="demo-content">
+                    <div>
+                        <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827; margin-bottom: 1rem;">Two Sisters' Smoothies</h3>
+                        <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                            A local smoothie bar that transformed their business with Project Zeus, maintaining their vibrant brand
+                            while streamlining operations across all customer touchpoints.
+                        </p>
+                    </div>
+
+                    <!-- Current Slide Content -->
+                    <div class="demo-highlight" id="demo-highlight">
+                        <h4 style="font-size: 1.25rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;" id="demo-title">Custom Branded Menu</h4>
+                        <p style="color: #374151; margin-bottom: 1rem;" id="demo-description">
+                            Beautiful product showcase maintaining the shop's unique visual identity with seamless browsing experience.
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;" id="demo-features">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                                <div style="width: 0.375rem; height: 0.375rem; background: #14b8a6; border-radius: 50%;"></div>
+                                Product grid layout
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                                <div style="width: 0.375rem; height: 0.375rem; background: #14b8a6; border-radius: 50%;"></div>
+                                Custom branding
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                                <div style="width: 0.375rem; height: 0.375rem; background: #14b8a6; border-radius: 50%;"></div>
+                                Price display
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                                <div style="width: 0.375rem; height: 0.375rem; background: #14b8a6; border-radius: 50%;"></div>
+                                Category navigation
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Impact Stats -->
+                    <!-- <div class="demo-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">Order Increase</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" style="color: #0ea5e9;">25%</div>
+                            <div class="stat-label">Customer Retention</div>
+                        </div>
+                    </div> -->
+
+                    <!-- Page Indicators -->
+                    <div class="demo-tabs">
+                        <button class="demo-tab active" onclick="goToSlide(0)">Custom Branded Menu</button>
+                        <button class="demo-tab" onclick="goToSlide(1)">Smart Order Management</button>
+                        <button class="demo-tab" onclick="goToSlide(2)">Seamless Checkout</button>
+                        <button class="demo-tab" onclick="goToSlide(3)">Loyalty & Rewards</button>
+                    </div>
+
+                    <div style="padding-top: 1rem;">
+                        <a href="#" class="btn btn-primary">
+                            See Your Brand Come to Life →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Merchant Types -->
+            <div style="margin-top: 5rem;">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827; text-align: center; margin-bottom: 2rem;">Perfect for Every Business Type</h3>
+                <div class="grid grid-3">
+                    <div class="card card-center">
+                        <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #14b8a6, #0f766e); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">🥤</div>
+                        <h4 class="card-title">F&B Outlets</h4>
+                        <p class="card-content">
+                            Cafes, restaurants, smoothie bars, and food trucks - perfect for menu-based businesses.
+                        </p>
+                    </div>
+
+                    <div class="card card-center">
+                        <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #a855f7, #7c3aed); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">🛍️</div>
+                        <h4 class="card-title">Retail Stores</h4>
+                        <p class="card-content">
+                            Boutiques, electronics, home goods - ideal for product catalog and inventory management.
+                        </p>
+                    </div>
+
+                    <div class="card card-center">
+                        <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">🏪</div>
+                        <h4 class="card-title">Local Services</h4>
+                        <p class="card-content">
+                            Beauty salons, repair shops, local services - great for appointment and service booking.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Sustainable Growth Model</h2>
+            <p class="section-subtitle">
+                Our hybrid pricing approach combines affordable SaaS tiers with performance-based commissions, ensuring both
+                platform sustainability and merchant success.
+            </p>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 1rem;">
+                        <span style="color: #14b8a6;">⭐</span>
+                        Tiered SaaS Pricing
+                    </h3>
+                    <p class="card-content">
+                        Predictable monthly costs with clear feature tiers that scale with your business needs.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 1rem;">
+                        <span style="color: #10b981;">📈</span>
+                        Transaction Commissions
+                    </h3>
+                    <p class="card-content">
+                        Performance-based revenue sharing that aligns our success with your business growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="badge" style="margin-bottom: 1rem;">
+                    🎉 Limited Time: Double Order Limits Until Dec 31, 2025
+                </div>
+                <h2 class="section-title">Choose Your Growth Plan</h2>
+                <p class="section-subtitle">
+                    Start free and scale as you grow. All plans include our core features with increasing limits and
+                    capabilities.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Starter</h3>
+                        <div>
+                            <span class="pricing-price">$0</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <p class="pricing-description">Perfect for getting started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Up to 500 orders/month
+                        </li>
+                        <li style="color: #14b8a6; font-weight: 500;">
+                            <span class="star-icon">⭐</span>
+                            🎉 1,000 orders until Dec 31
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Order Management
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Payment Processing
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            QR Menu
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" style="width: 100%;">Get Started Free</a>
+                </div>
+
+                <!-- Growth Plan -->
+                <div class="pricing-card popular">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Growth</h3>
+                        <div>
+                            <span class="pricing-price">$29.99</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <p class="pricing-description">For growing businesses</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Up to 1,000 orders/month
+                        </li>
+                        <li style="color: #14b8a6; font-weight: 500;">
+                            <span class="star-icon">⭐</span>
+                            🎉 2,000 orders until Dec 31
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Everything in Starter
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Promo Codes
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Basic Analytics
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Customer Product Reviews
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">Start Growth Plan</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pro</h3>
+                        <div>
+                            <span class="pricing-price">$49.99</span>
+                            <span class="pricing-period">/month</span>
+                        </div>
+                        <p class="pricing-description">For established businesses</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Up to 2,000 orders/month
+                        </li>
+                        <li style="color: #14b8a6; font-weight: 500;">
+                            <span class="star-icon">⭐</span>
+                            🎉 4,000 orders until Dec 31
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Everything in Growth
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Loyalty Engine
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Advanced CRM
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            Custom Branding & Website
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" style="width: 100%;">Upgrade to Pro</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Promotion Timeline -->
+    <section class="section promotion-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">🎉 Limited Time Promotion</h2>
+                <p style="font-size: 1.125rem; opacity: 0.9;">
+                    Take advantage of our launch offer with enhanced limits and free feature access
+                </p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="promotion-card">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">
+                        📅 Until December 31, 2025
+                    </h3>
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #86efac;">✓</span>
+                            Double order limits on all tiers
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #86efac;">✓</span>
+                            Free access to new features as released
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #86efac;">✓</span>
+                            No automatic upgrades or charges
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="promotion-card">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">
+                        → From January 1, 2026
+                    </h3>
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #fde047;">✓</span>
+                            Standard order limits resume
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #fde047;">✓</span>
+                            Upgrade required for new features
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: #fde047;">✓</span>
+                            Auto-upgrade if limits exceeded
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 0.875rem; opacity: 0.8;">
+                    * Merchants exceeding their tier's standard order limit will be automatically charged for the next tier
+                    starting January 1, 2026
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: #111827; color: white;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2.5rem; font-weight: bold; color: white; margin-bottom: 1.5rem;">Ready to Transform Your Business?</h2>
+            <p style="font-size: 1.125rem; color: #d1d5db; margin-bottom: 2rem;">
+                Join thousands of merchants across Southeast Asia who are already growing with Project Zeus.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary btn-lg">Start Your Free Trial</a>
+                <a href="#" class="btn btn-outline btn-lg" style="border-color: #6b7280; color: #d1d5db;">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">⚡</div>
+                <span class="footer-logo-text">Project Zeus</span>
+            </div>
+            <p style="font-size: 0.875rem;">© 2025 Project Zeus. All rights reserved. Built for Southeast Asian merchants.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const tabs = document.querySelectorAll('.demo-tab');
+        
+        const slideData = [
+            {
+                title: "Custom Branded Menu",
+                description: "Beautiful product showcase maintaining the shop's unique visual identity with seamless browsing experience.",
+                features: ["Product grid layout", "Custom branding", "Price display", "Category navigation"]
+            },
+            {
+                title: "Smart Order Management",
+                description: "Intuitive ordering process with customization options and real-time inventory updates.",
+                features: ["Product customization", "Size options", "Add-ons selection", "Quantity controls"]
+            },
+            {
+                title: "Seamless Checkout",
+                description: "Streamlined payment process with multiple payment options and order confirmation.",
+                features: ["Multiple payment methods", "Order summary", "Delivery options", "Customer details"]
+            },
+            {
+                title: "Loyalty & Rewards",
+                description: "Built-in rewards system driving customer retention and repeat business growth.",
+                features: ["Points tracking", "Reward redemption", "Tier benefits", "Special offers"]
+            }
+        ];
+
+        function updateSlide(index) {
+            // Update slides
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.style.transform = 'translateX(0%)';
+                } else if (i < index) {
+                    slide.style.transform = 'translateX(-100%)';
+                } else {
+                    slide.style.transform = 'translateX(100%)';
+                }
+            });
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            // Update tabs
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+
+            // Update content
+            const data = slideData[index];
+            document.getElementById('demo-title').textContent = data.title;
+            document.getElementById('demo-description').textContent = data.description;
+            
+            const featuresContainer = document.getElementById('demo-features');
+            featuresContainer.innerHTML = data.features.map(feature => `
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                    <div style="width: 0.375rem; height: 0.375rem; background: #14b8a6; border-radius: 50%;"></div>
+                    ${feature}
+                </div>
+            `).join('');
+
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            updateSlide(next);
+        }
+
+        function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlide(prev);
+        }
+
+        function goToSlide(index) {
+            updateSlide(index);
+        }
+
+        // Auto-play carousel
+        setInterval(nextSlide, 4000);
+
+        // Initialize
+        updateSlide(0);
+    </script>
+</body>
+</html>
